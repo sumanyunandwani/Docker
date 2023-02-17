@@ -1,0 +1,16 @@
+
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip
+
+RUN mkdir -p /home/data/
+RUN mkdir -p /home/output/
+
+COPY scripts/main.py /home/data/main.py
+COPY textfiles/IF.txt /home/data/IF.txt
+COPY textfiles/Limerick-1.txt /home/data/Limerick-1.txt
+
+
+ENTRYPOINT ["python3", "/home/data/main.py"]
